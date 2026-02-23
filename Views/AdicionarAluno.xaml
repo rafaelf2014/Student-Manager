@@ -1,0 +1,175 @@
+﻿<Window
+    x:Class="ProjetoLPDS.Views.AdicionarAluno"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ProjetoLPDS.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="AdicionarAluno"
+    Width="700"
+    Height="520"
+    Icon="pack://application:,,,/Images/AppIcon.png"
+    ResizeMode="CanMinimize"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <Style x:Key="HoverShadowButton" TargetType="Button">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                        BlurRadius="0"
+                        Opacity="0"
+                        ShadowDepth="0" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect
+                                BlurRadius="10"
+                                Opacity="0.5"
+                                ShadowDepth="2" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FFE3E3E3">
+        <!--  Top Bar  -->
+        <Border
+            Height="40"
+            VerticalAlignment="Top"
+            Background="#FF3F50B5">
+            <Grid>
+                <TextBlock
+                    Margin="20,0,0,0"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    Text="Sistema de Gestão de Avaliações" />
+            </Grid>
+        </Border>
+        <Border
+            Margin="150,70,150,60"
+            Background="#FFF1ECEC"
+            CornerRadius="10,10,10,10">
+            <StackPanel Margin="20">
+                <!--  Título  -->
+                <TextBlock
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Foreground="#FF3F50B5"
+                    Text="Adicionar Aluno" />
+                <TextBlock
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Foreground="#FF677676"
+                    Text="Numero:"
+                    TextWrapping="Wrap" />
+                <TextBox
+                    x:Name="tbNumero"
+                    Width="356"
+                    Height="34"
+                    Margin="0,7"
+                    FontSize="18"
+                    Text="{Binding AlunoEditavel.Numero, Mode=TwoWay}"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Foreground="#FF677676"
+                    Text="Nome:"
+                    TextWrapping="Wrap" />
+                <TextBox
+                    x:Name="tbNome"
+                    Width="356"
+                    Height="34"
+                    Margin="0,7"
+                    FontSize="18"
+                    Text="{Binding AlunoEditavel.Nome, Mode=TwoWay}"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Foreground="#FF677676"
+                    Text="Email:"
+                    TextWrapping="Wrap" />
+                <TextBox
+                    x:Name="tbEmail"
+                    Width="356"
+                    Height="34"
+                    Margin="0,7"
+                    FontSize="18"
+                    Text="{Binding AlunoEditavel.Email, Mode=TwoWay}"
+                    TextWrapping="Wrap" />
+
+                <StackPanel
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        x:Name="btnAdicionar"
+                        Width="120"
+                        Height="33"
+                        Margin="40,20"
+                        Background="LimeGreen"
+                        Click="btnAdicionar_Click"
+                        Content="Adicionar"
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        Foreground="White">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    x:Name="buttonGravarBorder"
+                                    Background="{TemplateBinding Background}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="3">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="buttonGravarBorder" Property="Background" Value="#6cd46c" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button
+                        x:Name="btnCancelar"
+                        Width="120"
+                        Margin="40,20"
+                        Background="Red"
+                        Click="btnCancelar_Click"
+                        Content="Cancelar"
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        Foreground="White">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    x:Name="buttonGravarBorder"
+                                    Background="{TemplateBinding Background}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="3">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="buttonGravarBorder" Property="Background" Value="#eb5d52" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

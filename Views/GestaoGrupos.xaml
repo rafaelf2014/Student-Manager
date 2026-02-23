@@ -1,0 +1,364 @@
+﻿<Window
+    x:Class="ProjetoLPDS.Views.GestaoGrupos"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ProjetoLPDS.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="GestaoGrupos"
+    Width="700"
+    Height="565"
+    Icon="pack://application:,,,/Images/AppIcon.png"
+    ResizeMode="CanMinimize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <Style x:Key="HoverShadowButton" TargetType="Button">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                        BlurRadius="0"
+                        Opacity="0"
+                        ShadowDepth="0" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect
+                                BlurRadius="10"
+                                Opacity="0.5"
+                                ShadowDepth="2" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FFE3E3E3">
+        <!--  Top Bar  -->
+        <Border
+            Height="40"
+            VerticalAlignment="Top"
+            Background="#FF3F50B5">
+            <Grid>
+                <TextBlock
+                    Margin="20,0,0,0"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    Text="Sistema de Gestão de Avaliações" />
+                <Button
+                    x:Name="btnVoltar"
+                    Width="67"
+                    Height="22"
+                    Margin="0,0,10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Background="White"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Click="btnVoltar_Click"
+                    Content="voltar"
+                    FontSize="14"
+                    Foreground="#3F51B5">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                x:Name="buttonVoltarBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="3">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="buttonVoltarBorder" Property="Background" Value="#ebe8e8" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!--  Main Panel  -->
+        <Border
+            Margin="30,60,30,20"
+            Background="White"
+            BorderBrush="WhiteSmoke"
+            BorderThickness="1"
+            CornerRadius="10">
+            <StackPanel Margin="20,20,20,9">
+                <!--  Título  -->
+                <TextBlock
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Foreground="#FF3F50B5"
+                    Text="Gestão de Grupos" />
+
+                <!--  Botões  -->
+                <StackPanel
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        x:Name="btnAdicionar"
+                        Width="90"
+                        Margin="5,0"
+                        Background="LimeGreen"
+                        Click="btnAdicionar_Click"
+                        Content="Adicionar"
+                        Foreground="White">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    x:Name="buttonGravarBorder"
+                                    Background="{TemplateBinding Background}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="3">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="buttonGravarBorder" Property="Background" Value="#6ad96a" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button
+                        x:Name="btnEditar"
+                        Width="90"
+                        Margin="5,0"
+                        Background="Orange"
+                        Click="btnEditar_Click"
+                        Content="Editar"
+                        Foreground="White"
+                        RenderTransformOrigin="0.5,0.5">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    x:Name="buttonGravarBorder"
+                                    Background="{TemplateBinding Background}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="3">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="buttonGravarBorder" Property="Background" Value="#f7b336" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button
+                        x:Name="btnRemover"
+                        Width="90"
+                        Margin="5,0"
+                        Background="Red"
+                        Click="btnRemover_Click"
+                        Content="Remover"
+                        Foreground="White">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    x:Name="buttonGravarBorder"
+                                    Background="{TemplateBinding Background}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="3">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="buttonGravarBorder" Property="Background" Value="#eb5d52" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button
+                        x:Name="btnAssociar"
+                        Width="112"
+                        Margin="5,0"
+                        Background="#2196F3"
+                        Content="Tarefas Associadas"
+                        Foreground="White" Click="btnAssociar_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    x:Name="buttonAssociarBorder"
+                                    Background="{TemplateBinding Background}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="3">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="buttonAssociarBorder" Property="Background" Value="#3ba2f5" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+
+                <!--  Pesquisa  -->
+                <DockPanel Margin="0,0,0,10">
+                    <Label VerticalAlignment="Center" Content="Pesquisar:" />
+                    <TextBox
+                        x:Name="tbPesquisar"
+                        Width="400"
+                        Margin="5,0" 
+                        TextChanged="tbPesquisar_TextChanged"/>
+                    <Button
+                        x:Name="btnPesquisar"
+                        Width="30"
+                        Height="25"
+                        Content="🔍"
+                        Click="btnPesquisar_Click"
+                        Style="{StaticResource HoverShadowButton}" />
+                </DockPanel>
+                <DataGrid
+                    x:Name="dataGridGrupos"
+                    Width="578"
+                    Height="308"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    HeadersVisibility="Column"
+                    IsReadOnly="True"
+                    ItemsSource="{Binding Grupos}"
+                    RowDetailsVisibilityMode="VisibleWhenSelected">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="100"
+                            Binding="{Binding Id}"
+                            Header="Id" />
+                        <DataGridTextColumn
+                            Width="250"
+                            Binding="{Binding Nome}"
+                            Header="Nome" />
+
+                        <!--  Alunos (numero)  -->
+                        <DataGridTemplateColumn Width="100" Header="Alunos">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Alunos.Count}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <!--  Botão "Adicionar membros"  -->
+                        <DataGridTemplateColumn Width="Auto" Header="">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button
+                                        Margin="5,3"
+                                        Padding="3"
+                                        Background="LimeGreen"
+                                        Click="btnAdicionarMembro_Click"
+                                        Content="Adicionar membros"
+                                        Foreground="White">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border
+                                                    x:Name="buttonGravarBorder"
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="buttonGravarBorder" Property="Background" Value="#6ad96a" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+
+                    <!--  Detalhes: Lista de alunos  -->
+                    <DataGrid.RowDetailsTemplate>
+                        <DataTemplate>
+                            <ScrollViewer Height="150" VerticalScrollBarVisibility="Auto">
+                                <DataGrid
+                                    x:Name="dataGridGrupoInfo"
+                                    Width="482"
+                                    Margin="5,10"
+                                    AutoGenerateColumns="False"
+                                    CanUserAddRows="False"
+                                    HeadersVisibility="Column"
+                                    IsReadOnly="True"
+                                    ItemsSource="{Binding Alunos}"
+                                    SelectionMode="Extended"
+                                    SelectionUnit="FullRow">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn
+                                            Width="50"
+                                            Binding="{Binding Numero}"
+                                            Header="Numero" />
+                                        <DataGridTextColumn
+                                            Width="200"
+                                            Binding="{Binding Nome}"
+                                            Header="Nome" />
+                                        <DataGridTextColumn
+                                            Width="150"
+                                            Binding="{Binding Email}"
+                                            Header="Email" />
+                                        <DataGridTemplateColumn Width="80">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button
+                                                        Margin="5,3"
+                                                        Padding="3"
+                                                        Background="Red"
+                                                        Click="btnRemoverAluno_Click"
+                                                        Content="Remover"
+                                                        Foreground="White"
+                                                        Tag="{Binding}">
+                                                        <Button.Template>
+                                                            <ControlTemplate TargetType="Button">
+                                                                <Border
+                                                                    x:Name="buttonGravarBorder"
+                                                                    Background="{TemplateBinding Background}"
+                                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                                </Border>
+                                                                <ControlTemplate.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter TargetName="buttonGravarBorder" Property="Background" Value="#eb5d52" />
+                                                                    </Trigger>
+                                                                </ControlTemplate.Triggers>
+                                                            </ControlTemplate>
+                                                        </Button.Template>
+                                                    </Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </ScrollViewer>
+                        </DataTemplate>
+                    </DataGrid.RowDetailsTemplate>
+
+                </DataGrid>
+
+
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
+
